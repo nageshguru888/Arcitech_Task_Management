@@ -106,10 +106,10 @@
                 });
 
                 if (!response.ok) {
-                    const errorMessage = await response.text(); // Get detailed error
+                    const errorMessage = await response.text(); 
                     console.error('Failed to update task:', errorMessage);
                     alert('Failed to update task: ' + response.statusText);
-                    return; // Exit the function if there's an error
+                    return; 
                 }
 
                 fetchTasks();
@@ -118,7 +118,7 @@
             }
         }
 
-        // Fetch tasks when the page loads
+        
         fetchTasks();
     </script>
 </body>

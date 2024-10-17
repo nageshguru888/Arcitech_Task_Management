@@ -22,5 +22,5 @@ This is a simple task management application built with Django REST Framework fo
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/nageshguru888/Arcitech_Task_Management.git
    cd Task_Manager_Project

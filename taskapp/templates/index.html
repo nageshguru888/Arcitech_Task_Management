@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+</head>
+<body>
+    <h1>Create Task</h1>
+
+    <form id="create-task-form">
+        <input type="text" id="title" placeholder="Title" required>
+        <textarea id="description" placeholder="Description" required></textarea>
+        <select id="status" required>
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <button type="submit">Create Task</button>
+    </form>
+
+    <a href="/task_list/">View All Tasks</a> 
+
+    <script>
+        const apiUrl = '/api/tasks/';
+
+        document.getElementById('create-task-form').onsubmit = async function(e) {
+            e.preventDefault();
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const status = document.getElementById('status').value;
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json', 
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
+                body: JSON.stringify({ title, description, status })
+            });
+
+            if (response.ok) {
+                alert('Task Created Successfully!');
+                window.location.href = '/task_list/';  
+            } else {
+                alert('Error creating task: ' + response.statusText);
+            }
+        };
+    </script>
+</body>
+</html>
